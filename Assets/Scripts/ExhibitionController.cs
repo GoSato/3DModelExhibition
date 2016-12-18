@@ -24,10 +24,15 @@ public class ExhibitionController : MonoBehaviour {
         {
             return;
         }
-            
-        foreach(var model in _modelList)
+
+        SetEqualInterval();
+    }
+
+    void SetEqualInterval()
+    {
+        for(int i=0; i<_modelList.Count; i++)
         {
-            Debug.Log(model.gameObject.name);
+
         }
     }
 }

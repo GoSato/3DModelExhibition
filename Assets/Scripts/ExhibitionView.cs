@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Exhibition : MonoBehaviour {
+public class ExhibitionView : MonoBehaviour {
+
+    /// <summary>
+    /// 展示物の挙動を制御
+    /// </summary>
 
     [SerializeField]
     private float _speed = 1;

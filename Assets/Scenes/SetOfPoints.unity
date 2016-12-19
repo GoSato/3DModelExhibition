@@ -377,6 +377,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013267919174, guid: c4bd36a584dc6c1429c2506c28df49a1,
+        type: 2}
+      propertyPath: _offset.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4bd36a584dc6c1429c2506c28df49a1, type: 2}
   m_IsPrefabParent: 0

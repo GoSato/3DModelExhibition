@@ -69,6 +69,7 @@ public class SetOfPointsConverter : MonoBehaviour {
             var point = Instantiate(_pointsModel, Vector3.zero, Quaternion.identity) as GameObject;
             point.transform.localScale = _pointsScale;
             point.transform.position = verticePoint;
+            point.transform.rotation = _pointsModel.transform.rotation;
             point.transform.parent = points.transform;
         }
 

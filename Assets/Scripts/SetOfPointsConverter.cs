@@ -12,38 +12,23 @@ public class SetOfPointsConverter : MonoBehaviour {
     [SerializeField]
     private Vector3 _pointsScale;
 
-    private List<Vector3> _vertices;
-
-    public List<Vector3> Vertices
+    private struct BaseInfo
     {
-        get
-        {
-            return _vertices;
-        }
+        public Vector3 pos;
+        public Quaternion rot;
+        public Vector3 scale;
     }
 
-    private Vector3 _scale;
-
-    private Vector3 _generatePos;
-
-    private Quaternion _rotation;
-
-	void Start () {
-        _vertices = GetVertices();
-        _scale = GetScale();
-        _generatePos = GetPosition();
-        _rotation = GetRotation();
-        GeneratePoints(_vertices, _generatePos, _rotation, _scale);
-	}
-	
-	void Update () {
-	
-	}
+    void Start() {
+        var vertices = GetVertices();
+        var baseInfo = GetBaseInfo();
+        GeneratePoints(vertices, baseInfo);
+    }
 
     /// <summary>
     /// Meshの頂点を取得
     /// </summary>
-   
+
     List<Vector3> GetVertices()
     {
         MeshFilter mf = GetComponent<MeshFilter>();
@@ -55,26 +40,27 @@ public class SetOfPointsConverter : MonoBehaviour {
         return vertices;
     }
 
-    Vector3 GetScale()
-    {
-        return gameObject.transform.localScale;
-    }
+    /// <summary>
+    /// 点集合の基となるモデルの情報を取得
+    /// </summary>
+    /// <returns></returns>
 
-    Vector3 GetPosition()
+    BaseInfo GetBaseInfo()
     {
-        return gameObject.transform.position;
-    }
+        BaseInfo info = new BaseInfo();
 
-    Quaternion GetRotation()
-    {
-        return gameObject.transform.rotation;
+        info.pos = gameObject.transform.position;
+        info.rot = gameObject.transform.rotation;
+        info.scale = gameObject.transform.localScale;
+
+        return info;
     }
 
     /// <summary>
     /// 点集合生成
     /// </summary>
 
-    void GeneratePoints(List<Vector3> vertices, Vector3 pos, Quaternion rot, Vector3 scale)
+    void GeneratePoints(List<Vector3> vertices, BaseInfo info)
     {
         var points = new GameObject("Points");
 
@@ -86,8 +72,8 @@ public class SetOfPointsConverter : MonoBehaviour {
             point.transform.parent = points.transform;
         }
 
-        points.transform.position = pos;
-        points.transform.rotation = rot;
-        points.transform.localScale = scale;
+        points.transform.position = info.pos;
+        points.transform.rotation = info.rot;
+        points.transform.localScale = info.scale;
     }
 }

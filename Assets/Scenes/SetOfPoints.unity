@@ -184,6 +184,7 @@ MonoBehaviour:
   _pointsModel: {fileID: 1000011271199180, guid: 884b035989cd3e740b131f04b7c5693c,
     type: 2}
   _pointsScale: {x: 0.1, y: 0.1, z: 0.1}
+  _splitNum: 0
 --- !u!1 &528069026
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +405,7 @@ MonoBehaviour:
   _pointsModel: {fileID: 1000011595399930, guid: c4bd36a584dc6c1429c2506c28df49a1,
     type: 2}
   _pointsScale: {x: 0.05, y: 0.05, z: 0.05}
+  _splitNum: 8
 --- !u!1 &1953520275
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +439,7 @@ MonoBehaviour:
   _pointsModel: {fileID: 1000011271199180, guid: 884b035989cd3e740b131f04b7c5693c,
     type: 2}
   _pointsScale: {x: 0.1, y: 0.1, z: 0.1}
+  _splitNum: 10
 --- !u!23 &1953520277
 MeshRenderer:
   m_ObjectHideFlags: 0

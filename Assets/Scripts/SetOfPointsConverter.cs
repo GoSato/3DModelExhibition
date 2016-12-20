@@ -12,6 +12,10 @@ public class SetOfPointsConverter : MonoBehaviour {
     [SerializeField]
     private Vector3 _pointsScale;
 
+    [Header("頂点数を何分の一にするか")]
+    [SerializeField]
+    private int _splitNum;
+
     private struct BaseInfo
     {
         public Vector3 pos;
@@ -63,18 +67,38 @@ public class SetOfPointsConverter : MonoBehaviour {
     void GeneratePoints(List<Vector3> vertices, BaseInfo info)
     {
         var points = new GameObject("Points");
+        var count = 0;
+        var pointList = new List<GameObject>();
 
-        foreach(Vector3 verticePoint in vertices)
+        if (_splitNum == 0)
         {
-            var point = Instantiate(_pointsModel, Vector3.zero, Quaternion.identity) as GameObject;
-            point.transform.localScale = _pointsScale;
-            point.transform.position = verticePoint;
-            point.transform.rotation = _pointsModel.transform.rotation;
-            point.transform.parent = points.transform;
+            _splitNum = 1;
         }
 
+        foreach (Vector3 verticePoint in vertices)
+        {
+            count++;
+
+            if (count % _splitNum == 0)
+            {
+                var point = Instantiate(_pointsModel, Vector3.zero, Quaternion.identity) as GameObject;
+                point.transform.parent = points.transform;
+                point.transform.localScale = _pointsScale;
+                point.transform.position = verticePoint;
+                pointList.Add(point);   
+            }
+            
+        }
+
+        //点集合全体をベースのモデルに合わせる
         points.transform.position = info.pos;
         points.transform.rotation = info.rot;
         points.transform.localScale = info.scale;
+
+        //点集合一つ一つをベースのモデルに合わせる
+        foreach(var point in pointList)
+        {
+            point.transform.rotation = _pointsModel.transform.rotation;
+        }
     }
 }

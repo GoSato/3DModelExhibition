@@ -81,11 +81,10 @@ public class SetOfPointsConverter : MonoBehaviour {
 
             if (count % _splitNum == 0)
             {
-                var point = Instantiate(_pointsModel, Vector3.zero, Quaternion.identity) as GameObject;
-                point.transform.parent = points.transform;
+                var point = Instantiate(_pointsModel, Vector3.zero, Quaternion.identity, points.transform) as GameObject;
                 point.transform.localScale = _pointsScale;
                 point.transform.position = verticePoint;
-                pointList.Add(point);   
+                pointList.Add(point);
             }
             
         }

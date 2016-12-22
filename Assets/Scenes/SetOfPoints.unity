@@ -405,7 +405,7 @@ MonoBehaviour:
   _pointsModel: {fileID: 1000011595399930, guid: c4bd36a584dc6c1429c2506c28df49a1,
     type: 2}
   _pointsScale: {x: 0.05, y: 0.05, z: 0.05}
-  _splitNum: 8
+  _splitNum: 1
 --- !u!1 &1953520275
 GameObject:
   m_ObjectHideFlags: 0

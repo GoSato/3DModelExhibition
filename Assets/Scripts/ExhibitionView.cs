@@ -22,6 +22,6 @@ public class ExhibitionView : MonoBehaviour {
 
     void Update()
     {
-        transform.Rotate(new Vector3(0, Time.deltaTime * _speed, 0),Space.World);
+        transform.Rotate(new Vector3(0, Time.deltaTime * _speed, 0), Space.World);
     }
 }
